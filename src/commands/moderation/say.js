@@ -5,7 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('say')
     .setDescription('Say a messsage as the bot.')
-    .addStringOption(option => option.setName('message').setDescription('Let Cloudy send a message.').setRequired(true))
+    .addStringOption(option => option.setName('message').setDescription('Let Chill Guy send a message.').setRequired(true))
     .addChannelOption(option => option.setName('channel').setDescription('Channel to send this message in.').setRequired(false)),
     async execute(interaction) {
 

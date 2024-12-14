@@ -24,8 +24,8 @@
     "quick.db": "^9.1.7",
     "zod": "^3.23.4"
   },
-  "name": "cloudy",
-  "description": "The Cloudy Discord Bot for the SafeCloud Discord Server!\r [safecloud.quest/discord](url)",
+  "name": "ChillGuy",
+  "description": "The ChillGuy Discord Bot for Kila's Discord Server!\r [](url)",
   "version": "1.0.0",
   "main": "./index.js",
   "scripts": {
@@ -33,12 +33,12 @@
     "dev": "node ./deploy-commands.js & nodemon index.js"
   },
   "keywords": [],
-  "author": "Wingdingderp, GeneralKeno",
+  "author": "Wingdingderp",
   "license": "ISC",
-  "repository": "git+https://github.com/Wingdingderp/Cloudy.git",
+  "repository": "git+https://github.com/Wingdingderp/chill-guy.git",
   "bugs": {
-    "url": "https://github.com/Wingdingderp/Cloudy/issues"
+    "url": "https://github.com/Wingdingderp/chill-guy/issues"
   },
-  "homepage": "https://github.com/Wingdingderp/Cloudy#readme",
+  "homepage": "https://github.com/Wingdingderp/chill-guy#readme",
   "private": false
 }

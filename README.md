@@ -1,15 +1,3 @@
-# Cloudy
-The Cloudy Discord Bot for the SafeCloud Discord Server!
-[safecloud.quest/discord](url)
-
-TODO:
-
-* [x] Auto roles
-* [ ] Invite tracker (User Join, User Leave)
-* [x] Level system
-* [ ] Logs
-* [x] Moderation commands (Ex. Purge)
-* [ ] Send message in channels
-* [ ] Timed messages
-* [x] Welcome message
+# Chill Guy
+The Chill Guy Discord Bot for Killa's YT Discord Server!
 
