@@ -1,6 +1,5 @@
 const { EmbedBuilder, Events, AuditLogEvent, codeBlock } = require('discord.js');
 const Audit_Log = require("../../Schemas.js/auditlog");
-const countingSchema = require('../../Schemas.js/countingSchema');
 const Client = require("discord.js");
 const log_actions = require("../../Schemas.js/logactions");
 const token = require("../../../encrypt").token(5);
@@ -23,26 +22,11 @@ module.exports = async (client) => {
 
             const logID = data.messageLog;   
             const auditChannel = client.channels.cache.get(logID);
-            const countingData = await countingSchema.findOne({ Guild: message.guild.id });
-            const countingChannel = client.channels.cache.get('1178564984880513094') //Safe Cloud's Counting Channel
-            const iscountingChannel = [`1178564984880513094`]; //Safe Cloud's Counting Channel
-            const number = countingData.Count
-            const nextNumber = number + 1
-            const countingMsg = codeBlock(message.content)
 
             if (!auditChannel) {
                 console.error("Audit channel not found.");
                 return;
             }
-
-            if (iscountingChannel.includes(`${message.channel.id}`)) {
-                await countingChannel.send({ content: `⚠️ ${message.author} has deleted a message: ${countingMsg} The next number is **${nextNumber}**`})
-
-                countingData.count = number
-                countingData.LastUser = null;
-                await countingData.save();
-                return;
-            } 
 
             const auditEmbed = new EmbedBuilder()
             .setColor('Red')

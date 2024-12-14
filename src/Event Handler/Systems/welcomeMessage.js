@@ -1,5 +1,4 @@
 const { Events, EmbedBuilder  } = require('discord.js');
-const roleschema = require("../../Schemas.js/autorole");
 const welcomeschema = require("../../Schemas.js/welcomeschema")
 
 module.exports = async (client) => {
@@ -12,15 +11,6 @@ client.on(Events.GuildMemberAdd, async (member, err) => {
  
         const channelID = welcomedata.Channel;
         const channelwelcome = member.guild.channels.cache.get(channelID)
-        const roledata = await roleschema.findOne({ Guild: member.guild.id });
- 
-        if (roledata) {
-            const giverole = await member.guild.roles.cache.get(roledata.Role)
- 
-            member.roles.add(giverole).catch(err => {
-                console.log('Error received trying to give an auto role!');
-            })
-        }
  
         const embedwelcome = new EmbedBuilder()
          .setColor("DarkBlue")
