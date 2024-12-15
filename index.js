@@ -1,10 +1,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Partials, Collection, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
 const functionsExt = require('./functions');
 
-const client = new Client({ intents: [ Object.keys(GatewayIntentBits), GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent ] });
+const client = new Client({ partials: [Partials.Message, Partials.Reaction],intents: [ Object.keys(GatewayIntentBits), GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent,       GatewayIntentBits.GuildMessages,
+	GatewayIntentBits.GuildMessageReactions, ] });
 
 client.commands = new Collection();
 
@@ -72,3 +73,32 @@ process.on('unhandledRejection', (reason, promise) => {
 // Log in to Discord with your client's token
 client.login(process.env.DISCORD_TOKEN);
 
+
+//Reaction Roles
+const { ReactionRole } = require("discordjs-reaction-role");
+
+// Make sure that all the  environment variables are declared.
+["MEMBER_ROLE", "VERIFY_MESSAGE",
+	"ROLE_MSG", "BLUE_ROLE", "RED_ROLE", "GREEN_ROLE", "PURPLE_ROLE", "BLACK_ROLE",
+	"YELLOW_ROLE", "ORANGE_ROLE", "PINK_ROLE", "SNEEKPEEK_ROLE"
+].forEach((env) => {
+  if (!process.env[env]) {
+	console.error(`Missing environment variable: ${env}`);
+  }
+});
+
+const rr = new ReactionRole(client, [
+	//Verify
+	{ messageId: `${process.env.VERIFY_MESSAGE}`, reaction: "✅", roleId: `${process.env.MEMBER_ROLE}` }, 
+	//Color Roles
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🟦", roleId: `${process.env.BLUE_ROLE}` }, 
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🟥", roleId: `${process.env.RED_ROLE}` }, 
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🟩", roleId: `${process.env.GREEN_ROLE}` }, 
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🟪", roleId: `${process.env.PURPLE_ROLE}` }, 
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🖤", roleId: `${process.env.BLACK_ROLE}` }, 
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🟨", roleId: `${process.env.YELLOW_ROLE}` }, 
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🟧", roleId: `${process.env.ORANGE_ROLE}` }, 
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "🩷", roleId: `${process.env.PINK_ROLE}` }, 
+	//Mention Roles
+	{ messageId: `${process.env.ROLE_MSG}`, reaction: "👀", roleId: `${process.env.SNEEKPEEK_ROLE}` },
+]);
