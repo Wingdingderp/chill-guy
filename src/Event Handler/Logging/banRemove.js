@@ -21,7 +21,7 @@ module.exports = async (client) => {
             const moderator = banLog ? banLog.executor.tag : 'Unknown';
     
             const auditEmbed = new EmbedBuilder()
-            .setColor( 'Blue')
+            .setColor('Blue')
             .setTitle('Ban Removed')
             .setDescription(`Member: ${ban.user.tag} \nExecutor: ${moderator}`)
             .setTimestamp()

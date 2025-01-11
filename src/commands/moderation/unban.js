@@ -11,8 +11,8 @@ module.exports = {
 
         const userID = interaction.options.getUser('user');
 
-        if (!interaction.member.permissions.has(Permissions.BitField.Flags.BanMembers)) return await interaction.reply({ content: "You must have the ban members permission to use this command", ephemeral: true});
-        if (interaction.member.id === ID) return await interaction.reply({ content: "You cannot unban yourself!", ephemeral: true});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) return await interaction.reply({ content: "You must have the ban members permission to use this command", ephemeral: true});
+        if (interaction.member.id === userID) return await interaction.reply({ content: "You cannot unban yourself!", ephemeral: true});
 
         let reason = interaction.options.getString('reason');
         if (!reason) reason = "No reason given";

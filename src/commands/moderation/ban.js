@@ -13,7 +13,7 @@ module.exports = {
         const ID = users.id;
         const banUser = client.users.cache.get(ID)
 
-        if (!interaction.member.permissions.has(Permissions.BitField.Flags.BanMembers)) return await interaction.reply({ content: "You must have the ban members permission to use this command", ephemeral: true});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) return await interaction.reply({ content: "You must have the ban members permission to use this command", ephemeral: true});
         if (interaction.member.id === ID) return await interaction.reply({ content: "You cannot ban yourself!", ephemeral: true});
 
         let reason = interaction.options.getString('reason');
